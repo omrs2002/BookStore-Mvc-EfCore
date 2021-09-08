@@ -1,0 +1,37 @@
+﻿@page
+@using Acme.BookStore.Localization
+@using Acme.BookStore.Permissions
+@using Acme.BookStore.Web.Pages.Employees
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.Extensions.Localization
+@model IndexModel
+@inject IStringLocalizer<BookStoreResource> L
+@inject IAuthorizationService AuthorizationService
+@section scripts
+{
+    <abp-script src="/Pages/Employees/Index.js" />
+}
+<style>
+    .rtl .dropdown-menu, [dir="rtl"] .dropdown-menu {
+        right: inherit;
+    }
+</style>
+<abp-card>
+    <abp-card-header>
+        <abp-row>
+            <abp-column size-md="_6">
+                <abp-card-title>@L["Menu:Employees"]</abp-card-title>
+            </abp-column>
+            <abp-column size-md="_6" class="text-right">
+               
+                    <abp-button id="NewEmployeeButton"
+                                text="@L["NewEmployee"].Value"
+                                icon="plus"
+                                button-type="Primary" />
+            </abp-column>
+        </abp-row>
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table striped-rows="true" id="EmployeesTable"></abp-table>
+    </abp-card-body>
+</abp-card>
