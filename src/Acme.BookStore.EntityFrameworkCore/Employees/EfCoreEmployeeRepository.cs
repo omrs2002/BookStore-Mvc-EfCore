@@ -20,7 +20,11 @@ namespace Acme.BookStore.Authors
             : base(dbContextProvider)
         {
         }
-
+        public async Task<List<Employee>> FindManagersAsync()
+        {
+            var dbSet = await GetDbSetAsync();
+            return await dbSet.Where(new SalaryPlus10KEmployeeSpecification()).ToListAsync();
+        }
         public async Task<Employee> FindByNameAsync(string name)
         {
             var dbSet = await GetDbSetAsync();
