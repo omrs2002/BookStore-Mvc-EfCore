@@ -10,5 +10,10 @@ namespace Acme.BookStore.Employees
         public string EmployeeName { get; set; }
         [Required]
         public float Salary { get; set; }
+
+
+        [Required]
+        public int Age { get; set; }
+
     }
 }

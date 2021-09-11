@@ -82,6 +82,10 @@
                     data: "salary"
                 },
                 {
+                    title: l('Age'),
+                    data: "age"
+                },
+                {
                     title: l('CreationTime'),
                     data: "creationTime",
                     render: function (data) {

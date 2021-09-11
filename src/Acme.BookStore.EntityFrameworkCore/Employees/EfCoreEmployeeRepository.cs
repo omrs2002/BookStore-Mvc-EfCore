@@ -8,6 +8,7 @@ using Acme.BookStore.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
+using Volo.Abp.Specifications;
 
 namespace Acme.BookStore.Authors
 {
@@ -20,16 +21,23 @@ namespace Acme.BookStore.Authors
             : base(dbContextProvider)
         {
         }
-        public async Task<List<Employee>> FindManagersAsync()
+        public async Task<List<Employee>> FindByAgeAsync(int Age = -1)
         {
             var dbSet = await GetDbSetAsync();
-            return await dbSet.Where(new SalaryPlus10KEmployeeSpecification()).ToListAsync();
+            return await dbSet.Where
+                (
+                    new SalaryPlus10KEmployeeSpecification()
+                    .And(new PlusXAgeSpicification(Age))
+                    .ToExpression()
+                ).ToListAsync();
         }
         public async Task<Employee> FindByNameAsync(string name)
         {
             var dbSet = await GetDbSetAsync();
             return await dbSet.FirstOrDefaultAsync(author => author.EmployeeName == name);
         }
+        
+
 
         public async Task<List<Employee>> GetListAsync(
             int skipCount,
@@ -48,5 +56,6 @@ namespace Acme.BookStore.Authors
                 .Take(maxResultCount)
                 .ToListAsync();
         }
+
     }
 }

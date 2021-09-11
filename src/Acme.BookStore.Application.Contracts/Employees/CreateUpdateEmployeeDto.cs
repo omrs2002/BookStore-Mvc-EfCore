@@ -13,6 +13,9 @@ namespace Acme.BookStore.Employees
 
         [Required]
         public float Salary { get; set; }
+        
+        [Required]
+        public int Age { get; set; }
 
     }
 }

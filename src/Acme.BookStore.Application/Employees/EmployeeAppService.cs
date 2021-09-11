@@ -17,23 +17,21 @@ namespace Acme.BookStore.Employees
             Guid, //Primary key of the Employee entity
             PagedAndSortedResultRequestDto, //Used for paging/sorting
             CreateUpdateEmployeeDto>, //Used to create/update a Employee
-        IEmployeeAppService //implement the IEmployeeAppService
-
+        IEmployeeAppService //implement the IEmployeeAppService,
     {
 
         IRepository<Employee, Guid> _repository;
-
+        IEmployeeRepository _rep;
         //private readonly IUnitOfWorkManager _unitOfWorkManager;
 
 
         public EmployeeAppService(
-            IRepository<Employee, Guid> repository
-            //IUnitOfWorkManager unitOfWorkManager
-
+            IRepository<Employee, Guid> repository,
+            IEmployeeRepository emp_rep
             ) : base(repository)
         {
             _repository = repository;
-            //_unitOfWorkManager = unitOfWorkManager;
+            _rep = emp_rep;
         }
 
         /// <summary>
@@ -68,5 +66,12 @@ namespace Acme.BookStore.Employees
                 return false;
             }
         }
+
+
+        public async Task<List<Employee>> FindByAgeAsync(int Age = -1)
+        {
+            return await _rep.FindByAgeAsync(Age);
+        }
+
     }
 }

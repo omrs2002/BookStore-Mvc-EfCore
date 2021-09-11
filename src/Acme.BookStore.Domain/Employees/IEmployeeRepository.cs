@@ -9,6 +9,8 @@ namespace Acme.BookStore.Employees
     {
         Task<Employee> FindByNameAsync(string name);
 
+        Task<List<Employee>> FindByAgeAsync(int Age = -1);
+
         Task<List<Employee>> GetListAsync(
             int skipCount,
             int maxResultCount,

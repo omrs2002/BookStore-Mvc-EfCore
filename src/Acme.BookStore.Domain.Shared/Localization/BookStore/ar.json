@@ -50,7 +50,8 @@
     "Salary": "الراتب",
     "SetManager": "ترفيع مدير",
     "ConfirmSetManager": "هل انت متأكد من ترفيع الى مدير؟",
-    "SuccessfullyUpdated": "تم التعديل بنجاح!"
+    "SuccessfullyUpdated": "تم التعديل بنجاح!",
+    "Age": "العمر"
 
 
   }

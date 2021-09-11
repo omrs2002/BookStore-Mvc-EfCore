@@ -46,7 +46,8 @@
     "NewEmployee": "New Employee",
     "SetManager": "Set to Manager",
     "ConfirmSetManager": "Are you sure set manager?",
-    "SuccessfullyUpdated": "Successfully Updated!"
+    "SuccessfullyUpdated": "Successfully Updated!",
+    "Age" :  "Age"
 
   }
 }

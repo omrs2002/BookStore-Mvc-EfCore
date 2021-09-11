@@ -7,6 +7,7 @@ namespace Acme.BookStore.Employees
     {
         public string EmployeeName { get; set; }
         public float Salary { get; set; }
+        public int Age { get; set; }
         public string Department { get { return EmployeeName + " - Department"; }  }
     }
 }

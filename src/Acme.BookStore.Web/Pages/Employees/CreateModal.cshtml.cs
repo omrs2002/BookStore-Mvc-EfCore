@@ -38,6 +38,10 @@ namespace Acme.BookStore.Web.Pages.Employees
 
             [Required]
             public float Salary { get; set; }
+
+            [Required]
+            public int Age { get; set; }
+
         }
     }
 }
