@@ -51,6 +51,8 @@ namespace Acme.BookStore.Employees
                         employee.Salary = employee.Salary + (employee.Salary * 0.15f);
                     }
 
+                    
+
                     _ = await _repository.UpdateAsync(employee);
 
                     await uow.SaveChangesAsync();
@@ -66,6 +68,30 @@ namespace Acme.BookStore.Employees
                 return false;
             }
         }
+
+
+       
+        public async Task<bool> ChangeEmployeeName(Guid empID,string newName)
+        {
+            try
+            {
+                    Employee employee = await _repository.GetAsync(empID, false);
+                    if (employee != null)
+                    {
+                        employee.ChangeName(newName);
+                    }
+
+                    //_ = await _repository.UpdateAsync(employee);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                return false;
+            }
+        }
+
 
 
         public async Task<List<Employee>> FindByAgeAsync(int Age = -1)

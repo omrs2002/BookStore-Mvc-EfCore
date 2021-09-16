@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using Acme.BookStore.Employees;
 using Acme.BookStore.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Volo.Abp;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Specifications;
@@ -21,6 +23,20 @@ namespace Acme.BookStore.Authors
             : base(dbContextProvider)
         {
         }
+
+        public async Task ChangeNameAsync(
+            [NotNull] Employee emp,
+            [NotNull] string newName)
+        {
+            Check.NotNull(emp, nameof(emp));
+            Check.NotNullOrWhiteSpace(newName, nameof(newName));
+            var dbSet = await GetDbSetAsync();
+
+            Employee emp1 = await dbSet.FindAsync(emp.Id);
+            if (emp1 != null)
+                emp.ChangeName(newName);
+        }
+
         public async Task<List<Employee>> FindByAgeAsync(int Age = -1)
         {
             var dbSet = await GetDbSetAsync();

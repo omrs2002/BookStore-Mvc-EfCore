@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
+using Volo.Abp;
 using Volo.Abp.Domain.Repositories;
 
 namespace Acme.BookStore.Employees
@@ -17,5 +19,6 @@ namespace Acme.BookStore.Employees
             string sorting,
             string filter = null
         );
+        Task ChangeNameAsync( [NotNull] Employee emp, [NotNull] string newName);  
     }
 }

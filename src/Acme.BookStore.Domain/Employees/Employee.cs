@@ -11,9 +11,19 @@ namespace Acme.BookStore.Employees
         [Required]
         public float Salary { get; set; }
 
-
         [Required]
         public int Age { get; set; }
 
+        public void ChangeName(string newName)
+        {
+            AddLocalEvent(
+               new NameChangedEvent
+               {
+                   EmpID = Id,
+                   NewName = newName
+               }
+           );
+
+        }
     }
 }
