@@ -9,12 +9,12 @@ using Xunit;
 
 namespace Acme.BookStore.Books
 {
-    public class EmployeeAppService_Tests : BookStoreApplicationTestBase
+    public class BookAppService_Tests : BookStoreApplicationTestBase
     {
         private readonly IBookAppService _bookAppService;
         private readonly IAuthorAppService _authorAppService;
 
-        public EmployeeAppService_Tests()
+        public BookAppService_Tests()
         {
             _bookAppService = GetRequiredService<IBookAppService>();
             _authorAppService = GetRequiredService<IAuthorAppService>();
