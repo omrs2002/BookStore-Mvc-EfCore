@@ -8,11 +8,11 @@ using Volo.Abp.EventBus;
 
 namespace Acme.BookStore.Employees
 {
-    class ChangeNameEventHandler : ILocalEventHandler<NameChangedEvent>,
+    class NameChangedEventHandler : ILocalEventHandler<NameChangedEvent>,
           ITransientDependency
     {
         private IEmployeeRepository _empRepo;
-        public ChangeNameEventHandler( IEmployeeRepository empRepo)
+        public NameChangedEventHandler( IEmployeeRepository empRepo)
         {
             _empRepo = empRepo;
         }
