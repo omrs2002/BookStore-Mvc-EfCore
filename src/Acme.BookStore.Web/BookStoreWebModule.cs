@@ -72,6 +72,8 @@ namespace Acme.BookStore.Web
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
+            //admin password : 1q2w3E*
+
             var hostingEnvironment = context.Services.GetHostingEnvironment();
             var configuration = context.Services.GetConfiguration();
 
